@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT Support Desk | แจ้งซ่อมออนไลน์</title>
+    <meta
+      name="description"
+      content="Landing page สำหรับระบบแจ้งซ่อม IT Support ด้วยโทนสีดำ-ขาว และฟังก์ชันการแจ้งปัญหาที่รวดเร็ว"
+    />
+    <style>
+      :root {
+        --bg: #050505;
+        --panel: #111111;
+        --panel-2: #171717;
+        --soft: #202020;
+        --line: rgba(255,255,255,0.08);
+        --text: #f5f5f5;
+        --muted: #b3b3b3;
+        --white: #ffffff;
+        --shadow: 0 20px 40px rgba(0,0,0,0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: radial-gradient(circle at top, #171717 0%, #050505 45%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        background: rgba(5,5,5,0.8);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #ffffff 0%, #cfcfcf 100%);
+        color: #070707;
+        font-size: 1.1rem;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--white);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 14px 22px;
+        font-weight: 600;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: var(--white);
+        color: #090909;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border-color: var(--line);
+        color: var(--white);
+      }
+
+      .hero {
+        padding: 74px 0 60px;
+      }
+
+      .hero-wrap {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 42px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 0 18px rgba(255,255,255,0.8);
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 1.04;
+        margin: 22px 0 18px;
+        letter-spacing: -0.06em;
+      }
+
+      .lead {
+        max-width: 620px;
+        font-size: 1.08rem;
+        color: var(--muted);
+        margin-bottom: 30px;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+      }
+
+      .metrics {
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+
+      .metric {
+        min-width: 120px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.8rem;
+        letter-spacing: -0.04em;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .hero-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 26px;
+        box-shadow: var(--shadow);
+      }
+
+      .status-board {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .status-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .status-title {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .status-pill {
+        background: rgba(255,255,255,0.08);
+        color: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 0.75rem;
+      }
+
+      .ticket-list {
+        padding: 20px;
+      }
+
+      .ticket {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 14px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px 16px;
+      }
+
+      .ticket + .ticket {
+        margin-top: 14px;
+      }
+
+      .ticket-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: #ffffff;
+        color: #0a0a0a;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+      }
+
+      .ticket small {
+        display: block;
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+
+      .ticket strong {
+        display: block;
+        font-size: 1.02rem;
+      }
+
+      .ticket-status {
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        border: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .status-open {
+        background: rgba(255,255,255,0.08);
+      }
+
+      .status-fix {
+        background: rgba(255,255,255,0.08);
+      }
+
+      .section {
+        padding: 40px 0 80px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 3rem);
+        letter-spacing: -0.05em;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 560px;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .info-card {
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 26px;
+      }
+
+      .icon-box {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: #ffffff;
+        color: #0a0a0a;
+        display: grid;
+        place-items: center;
+        margin-bottom: 16px;
+        font-weight: 800;
+      }
+
+      .info-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.35rem;
+      }
+
+      .info-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .step {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px 18px;
+      }
+
+      .step-no {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        background: #ffffff;
+        color: #0a0a0a;
+        font-weight: 800;
+        margin-bottom: 14px;
+      }
+
+      .step h4 {
+        margin: 0 0 8px;
+        font-size: 1.15rem;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .cta {
+        padding: 26px 0 90px;
+      }
+
+      .cta-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 32px 36px;
+      }
+
+      .cta-box h3 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        letter-spacing: -0.05em;
+      }
+
+      .cta-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .report-section {
+        padding: 18px 0 90px;
+      }
+
+      .report-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+        gap: 22px;
+      }
+
+      .report-panel {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 26px;
+      }
+
+      .report-panel h2,
+      .report-panel h3 {
+        margin: 0 0 8px;
+      }
+
+      .report-panel > p {
+        color: var(--muted);
+        margin: 0 0 22px;
+      }
+
+      .report-form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .form-field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .form-field label {
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 12px;
+        padding: 12px 14px;
+        background: #0a0a0a;
+        color: var(--text);
+        font: inherit;
+      }
+
+      .form-field textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .form-field input:focus,
+      .form-field select:focus,
+      .form-field textarea:focus {
+        outline: 2px solid rgba(255,255,255,0.65);
+        outline-offset: 2px;
+      }
+
+      .form-note,
+      .form-message {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .form-message {
+        min-height: 1.5em;
+      }
+
+      .form-message.is-error {
+        color: #ffb4b4;
+      }
+
+      .ticket-results {
+        display: grid;
+        gap: 12px;
+      }
+
+      .saved-ticket {
+        display: grid;
+        gap: 4px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255,255,255,0.02);
+      }
+
+      .saved-ticket strong {
+        overflow-wrap: anywhere;
+      }
+
+      .saved-ticket span {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .empty-tickets {
+        color: var(--muted);
+        border: 1px dashed rgba(255,255,255,0.16);
+        border-radius: 14px;
+        padding: 18px;
+      }
+
+      footer {
+        padding: 0 0 40px;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-wrap,
+        .card-grid,
+        .steps,
+        .report-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .cta-box,
+        .section-head,
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav {
+          min-height: 68px;
+        }
+
+        .nav-actions {
+          gap: 8px;
+        }
+
+        .btn {
+          padding: 12px 18px;
+          font-size: 0.9rem;
+        }
+
+        .metrics {
+          gap: 18px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .report-panel {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="#" class="brand" aria-label="IT Support Desk home">
+          <span class="brand-mark">IT</span>
+          <span>Support Desk</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#services">บริการ</a>
+          <a href="#process">กระบวนการ</a>
+          <a href="#services">ความครอบคลุม</a>
+          <a href="#contact">ติดต่อ</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="#contact">ติดต่อเรา</a>
+          <a class="btn btn-primary" href="#report">แจ้งซ่อม</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-wrap">
+          <div>
+            <span class="eyebrow">24/7 IT Support</span>
+            <h1>แจ้งซ่อมระบบ IT ได้เร็วขึ้นทุกครั้ง</h1>
+            <p class="lead">
+              จากอุปกรณ์คอมพิวเตอร์ เครื่องพิมพ์ ระบบเครือข่าย ไปจนถึงแอปพลิเคชันที่ใช้งานภายในองค์กร
+              ทีม IT Support ของเราพร้อมตอบรับและแก้ไขปัญหาแบบเรียลไทม์ ให้ทุกฝ่ายกลับมาทำงานได้ตามปกติ
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#report">แจ้งซ่อมตอนนี้</a>
+              <a class="btn btn-secondary" href="#services">ดูบริการ</a>
+            </div>
+            <div class="metrics" aria-label="Business metrics">
+              <div class="metric">
+                <strong>2,500+</strong>
+                <span>เคสที่ได้รับการแก้ไข</span>
+              </div>
+              <div class="metric">
+                <strong>15 min</strong>
+                <span>เวลาเริ่มตอบสนอง</span>
+              </div>
+              <div class="metric">
+                <strong>99.8%</strong>
+                <span>อัตราความพึงพอใจ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-label="Tickets summary">
+            <div class="status-board">
+              <div class="status-head">
+                <div class="status-title">Dashboard</div>
+                <span class="status-pill">Live Queue</span>
+              </div>
+              <div class="ticket-list">
+                <div class="ticket">
+                  <div class="ticket-icon">PC</div>
+                  <div>
+                    <small>คอมพิวเตอร์</small>
+                    <strong>ไม่เปิดเครื่อง</strong>
+                  </div>
+                  <span class="ticket-status status-open">Open</span>
+                </div>
+
+                <div class="ticket">
+                  <div class="ticket-icon">NW</div>
+                  <div>
+                    <small>เครือข่าย</small>
+                    <strong>Internet ล่าช้า</strong>
+                  </div>
+                  <span class="ticket-status status-fix">Fixing</span>
+                </div>
+
+                <div class="ticket">
+                  <div class="ticket-icon">PR</div>
+                  <div>
+                    <small>เครื่องพิมพ์</small>
+                    <strong>เอกสารไม่พิมพ์</strong>
+                  </div>
+                  <span class="ticket-status status-open">Open</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-head">
+            <h2>บริการที่ช่วยให้ธุรกิจมั่นใจ</h2>
+            <p>
+              เรารับดูแลทุกด้านของระบบสารสนเทศ ตั้งแต่การแจ้งปัญหาเบื้องต้นจนถึงการประสานงานและตรวจสอบหลังซ่อม
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="info-card">
+              <div class="icon-box">01</div>
+              <h3>แจ้งซ่อมออนไลน์</h3>
+              <p>ส่งคำขอแจ้งปัญหาแบบง่ายๆ ผ่านเว็บหรืออีเมล โดยมีข้อมูลที่จำเป็นครบถ้วนและติดตามสถานะได้ทันที</p>
+            </article>
+
+            <article class="info-card">
+              <div class="icon-box">02</div>
+              <h3>IT Remote Support</h3>
+              <p>ทีมงานสามารถเข้าถึงและตรวจสอบอุปกรณ์หรือระบบสำหรับแก้ไขปัญหาได้อย่างปลอดภัยและรวดเร็ว</p>
+            </article>
+
+            <article class="info-card">
+              <div class="icon-box">03</div>
+              <h3>Maintenance Preventive</h3>
+              <p>ติดตามสภาพอุปกรณ์ ซ่อมบำรุงเชิงป้องกัน พร้อมรายงานประสิทธิภาพและค่าวัดการใช้งานที่สำคัญ</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="container">
+          <div class="section-head">
+            <h2>กระบวนการทำงาน</h2>
+            <p>ระบบที่ออกแบบให้สอดคล้องกับการทำงานจริงของบุคลากรและทีม IT</p>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-no">1</div>
+              <h4>แจ้งปัญหา</h4>
+              <p>กรอกข้อมูลเรื่องที่ต้องการ เช่น อุปกรณ์ สถานที่ และลักษณะความเสียหาย</p>
+            </div>
+
+            <div class="step">
+              <div class="step-no">2</div>
+              <h4>ประเมินปัญหา</h4>
+              <p>ระบบและทีมงานคัดกรองความเร่งด่วนและกำหนดระดับความสำคัญให้ตรงกับสถานการณ์</p>
+            </div>
+
+            <div class="step">
+              <div class="step-no">3</div>
+              <h4>ดำเนินการซ่อม</h4>
+              <p>ทีมช่างหรือ IT Engineer ดำเนินการตรวจสอบและแก้ไขตามสภาพจริงของระบบ</p>
+            </div>
+
+            <div class="step">
+              <div class="step-no">4</div>
+              <h4>ยืนยันและปิดเคส</h4>
+              <p>ส่งผลการแก้ไขให้ผู้แจ้งทราบ พร้อมติดตามความเสถียรและแนะนำการป้องกันต่อไป</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="coverage">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>พร้อมรับเรื่องแจ้งซ่อมแล้ววันนี้</h3>
+              <p>กรอกแบบฟอร์มเพื่อบันทึกคำขอและติดตามรายการบนอุปกรณ์นี้</p>
+            </div>
+            <a class="btn btn-primary" href="#report">เริ่มแจ้งซ่อม</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-section" id="report">
+        <div class="container report-layout">
+          <div class="report-panel">
+            <h2>แจ้งซ่อม IT</h2>
+            <p>กรอกรายละเอียดปัญหาให้ทีม Support ตรวจสอบ</p>
+            <form class="report-form" id="repair-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="requester">ชื่อผู้แจ้ง</label>
+                  <input id="requester" name="requester" autocomplete="name" required maxlength="80" />
+                </div>
+                <div class="form-field">
+                  <label for="email">อีเมลติดต่อกลับ</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required maxlength="120" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="category">ประเภทปัญหา</label>
+                  <select id="category" name="category" required>
+                    <option value="">เลือกประเภท</option>
+                    <option>คอมพิวเตอร์ / โน้ตบุ๊ก</option>
+                    <option>อินเทอร์เน็ต / เครือข่าย</option>
+                    <option>เครื่องพิมพ์</option>
+                    <option>โปรแกรม / ระบบงาน</option>
+                    <option>อื่น ๆ</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="location">สถานที่ / แผนก</label>
+                  <input id="location" name="location" required maxlength="100" />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="description">รายละเอียดปัญหา</label>
+                <textarea id="description" name="description" required maxlength="1000" placeholder="อธิบายอาการหรือข้อความแจ้งเตือนที่พบ"></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">บันทึกคำขอแจ้งซ่อม</button>
+              <p class="form-note">รายการจะถูกเก็บไว้ในเบราว์เซอร์เครื่องนี้เท่านั้น ยังไม่ได้ส่งไปยังทีม IT</p>
+              <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="report-panel">
+            <h3>รายการแจ้งซ่อมในเครื่องนี้</h3>
+            <p>ตรวจสอบหมายเลขเคสและสถานะของคำขอที่บันทึกจากเบราว์เซอร์นี้</p>
+            <div class="ticket-results" id="ticket-results" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container footer-inner">
+        <div class="brand" aria-label="Brand footer">
+          <span class="brand-mark">IT</span>
+          <span>Support Desk</span>
+        </div>
+        <a href="#report">ไปที่แบบฟอร์มแจ้งซ่อม</a>
+      </div>
+    </footer>
+    <script>
+      const storageKey = "it-support-tickets";
+      const form = document.querySelector("#repair-form");
+      const message = document.querySelector("#form-message");
+      const ticketResults = document.querySelector("#ticket-results");
+
+      function readTickets() {
+        const savedTickets = localStorage.getItem(storageKey);
+        if (!savedTickets) return [];
+
+        const tickets = JSON.parse(savedTickets);
+        if (!Array.isArray(tickets)) {
+          throw new Error("ข้อมูลรายการแจ้งซ่อมไม่อยู่ในรูปแบบที่รองรับ");
+        }
+        return tickets;
+      }
+
+      function renderTickets() {
+        const tickets = readTickets();
+        ticketResults.replaceChildren();
+
+        if (tickets.length === 0) {
+          const emptyMessage = document.createElement("p");
+          emptyMessage.className = "empty-tickets";
+          emptyMessage.textContent = "ยังไม่มีรายการแจ้งซ่อมที่บันทึกไว้";
+          ticketResults.append(emptyMessage);
+          return;
+        }
+
+        tickets.slice().reverse().forEach((ticket) => {
+          const card = document.createElement("article");
+          card.className = "saved-ticket";
+
+          const title = document.createElement("strong");
+          title.textContent = `${ticket.id} · ${ticket.category}`;
+          const detail = document.createElement("span");
+          detail.textContent = `${ticket.description} — ${ticket.location}`;
+          const status = document.createElement("span");
+          status.textContent = `สถานะ: ${ticket.status} · ${ticket.createdAt}`;
+
+          card.append(title, detail, status);
+          ticketResults.append(card);
+        });
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        message.textContent = "";
+        message.classList.remove("is-error");
+
+        try {
+          const tickets = readTickets();
+          const formData = new FormData(form);
+          const now = new Date();
+          const ticket = {
+            id: `IT-${now.getTime().toString().slice(-8)}`,
+            requester: formData.get("requester").trim(),
+            email: formData.get("email").trim(),
+            category: formData.get("category"),
+            location: formData.get("location").trim(),
+            description: formData.get("description").trim(),
+            status: "รอตรวจสอบ",
+            createdAt: now.toLocaleString("th-TH")
+          };
+
+          tickets.push(ticket);
+          localStorage.setItem(storageKey, JSON.stringify(tickets));
+          form.reset();
+          message.textContent = `บันทึกคำขอแล้ว หมายเลขเคส ${ticket.id}`;
+          renderTickets();
+        } catch (error) {
+          message.textContent = `บันทึกไม่สำเร็จ: ${error.message}`;
+          message.classList.add("is-error");
+        }
+      });
+
+      try {
+        renderTickets();
+      } catch (error) {
+        ticketResults.textContent = `โหลดรายการไม่สำเร็จ: ${error.message}`;
+      }
+    </script>
+  </body>
+</html>
